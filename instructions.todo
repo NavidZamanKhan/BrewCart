@@ -1,0 +1,136 @@
+# Coffee App Development Plan
+
+## 1. Color Palette (Theme Analysis)
+- [ ] Set up Material 3 color scheme with seed color: #A0522D (Sienna/Coffee Brown)
+- [ ] Implement full color palette:
+  - [ ] Primary: #A0522D (Coffee Brown)
+  - [ ] Secondary: #D2B48C (Tan/Latte Beige)
+  - [ ] Background: #FFF8F0 (Cream White)
+  - [ ] Surface: #F5DEB3 (Light Wheat)
+  - [ ] Text (Dark): #3E2723 (Deep Brown)
+  - [ ] Accent: #6F4E37 (Espresso)
+  - [ ] Error: #D32F2F (Coffee Red)
+- [ ] Generate Material 3 theme using: https://m3.material.io/theme-builder
+
+## 2. Fonts Setup
+- [ ] Display Font (Titles/Logo):
+  - [ ] Choose between Pacifico or Quicksand
+  - [ ] Implement using GoogleFonts.pacifico()
+- [ ] Body Text:
+  - [ ] Choose between Roboto, Open Sans, or Nunito
+  - [ ] Implement using GoogleFonts.nunito()
+
+## 3. UI Components Implementation
+### A. Splash + Onboarding + Login
+- [ ] Splash Screen
+  - [ ] Implement AnimatedOpacity or FadeTransition logo
+- [ ] Login/Signup
+  - [ ] Create TextField components
+  - [ ] Add ElevatedButton
+  - [ ] Implement Form with validation
+
+### B. Home Page
+- [ ] Header Section
+  - [ ] Create Row layout
+  - [ ] Add CircleAvatar for profile
+- [ ] Categories
+  - [ ] Implement TabBar or horizontal scrollable ListView
+- [ ] Coffee List
+  - [ ] Create ListView.builder with custom Card UI
+
+### C. Product Details
+- [ ] Implement Hero animation for thumbnail → detail view
+- [ ] Add Stepper or Dropdown for size, sugar options
+- [ ] Create ElevatedButton for Add to Cart
+
+### D. Cart + Payment
+- [ ] Create ListView cart with delete icons
+- [ ] Implement fake payment mockup
+- [ ] (Future) Integrate with Stripe or bKash
+
+### E. Profile + Settings
+- [ ] Create ListTile widgets for:
+  - [ ] Profile
+  - [ ] Order history
+  - [ ] Logout
+
+## 4. Project Structure Setup
+- [ ] Create folder structure:
+  ```
+  /lib
+   ├── main.dart
+   ├── app.dart
+   ├── config/
+   │    ├── theme.dart
+   │    └── constants.dart
+   ├── features/
+   │    ├── auth/
+   │    ├── home/
+   │    ├── product/
+   │    ├── cart/
+   │    └── profile/
+   └── widgets/
+  ```
+
+## 5. State Management (Riverpod)
+- [ ] Create providers:
+  - [ ] auth_provider.dart
+  - [ ] cart_provider.dart
+  - [ ] product_provider.dart
+
+## 6. Development Timeline
+### Week 1
+- [ ] Setup Flutter project
+- [ ] Implement theme
+- [ ] Add fonts
+- [ ] Create onboarding
+- [ ] Build login UI
+
+### Week 2
+- [ ] Develop home screen
+- [ ] Create product listing
+- [ ] Build product detail page
+
+### Week 3
+- [ ] Implement cart page
+- [ ] Create mock checkout
+- [ ] Add order confirmation
+
+### Week 4
+- [ ] Build profile section
+- [ ] Add order history
+- [ ] Implement Lottie splash
+- [ ] Polish UI/UX
+
+### Bonus
+- [ ] Add animated feedback (e.g., cart interactions)
+
+## 7. Dependencies Setup
+- [ ] Add required packages:
+  ```yaml
+  dependencies:
+    flutter:
+      sdk: flutter
+    flutter_riverpod: ^2.0.0
+    google_fonts: ^6.1.0
+    lottie: ^2.2.0
+    go_router: ^10.0.0
+    flutter_svg: ^2.0.7
+    cached_network_image: ^3.2.1
+  ```
+
+## 8. Design Assets
+- [ ] Source coffee icons from: https://www.flaticon.com/
+- [ ] Get transparent coffee cup PNGs from: https://www.cleanpng.com/
+- [ ] Find hero/featured images from: https://unsplash.com/s/photos/coffee
+
+## 9. Implementation Tips
+- [ ] Use Hero animations between coffee list → detail
+- [ ] Implement cart state persistence with flutter_riverpod + shared_preferences
+- [ ] Add SliverAppBar for scrollable effects
+- [ ] Carefully plan animations to avoid clutter
+
+## Notes
+- All original content preserved
+- Format optimized for readability
+- Checkboxes added for progress tracking
