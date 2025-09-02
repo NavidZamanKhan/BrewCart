@@ -13,6 +13,8 @@ class _AuthScreenState extends State<AuthScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        width: double.infinity,
+        height: double.infinity,
         padding: EdgeInsets.all(20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -25,11 +27,11 @@ class _AuthScreenState extends State<AuthScreen> {
                   .copyWith(fontWeight: FontWeight.w900)
                   .copyWith(color: Theme.of(context).colorScheme.primary),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 30),
             TextFormField(
               decoration: InputDecoration(
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(32),
                 ),
                 prefixIcon: Icon(Icons.email),
                 labelText: "Email",
@@ -39,10 +41,24 @@ class _AuthScreenState extends State<AuthScreen> {
             TextFormField(
               decoration: InputDecoration(
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(16),
+                  borderRadius: BorderRadius.circular(32),
                 ),
+
                 prefixIcon: Icon(Icons.lock),
                 labelText: "Password",
+              ),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Theme.of(context).colorScheme.primary,
+              ),
+              child: Text(
+                "Sign Up",
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  color: Theme.of(context).colorScheme.onPrimary,
+                ),
               ),
             ),
           ],
