@@ -29,6 +29,10 @@ class _AuthScreenState extends State<AuthScreen> {
             ),
             const SizedBox(height: 30),
             TextFormField(
+              keyboardType: TextInputType.emailAddress,
+              autocorrect: false,
+              obscureText: false,
+              textInputAction: TextInputAction.next,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(32),
@@ -36,18 +40,33 @@ class _AuthScreenState extends State<AuthScreen> {
                 prefixIcon: Icon(Icons.email),
                 labelText: "Email",
               ),
+              validator: (value) {
+                if (value == null || value.isEmpty || !value.contains("@")) {
+                  return "Please enter a valid email address";
+                }
+              },
             ),
+
             const SizedBox(height: 20),
             TextFormField(
+              keyboardType: TextInputType.visiblePassword,
+              obscureText: true,
+              autocorrect: false,
+              textInputAction: TextInputAction.done,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(32),
                 ),
-
                 prefixIcon: Icon(Icons.lock),
                 labelText: "Password",
               ),
+              validator: (value) {
+                if (value == null || value.isEmpty || value.length < 4) {
+                  return "Please enter a valid password";
+                }
+              },
             ),
+
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {},

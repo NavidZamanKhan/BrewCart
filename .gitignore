@@ -46,3 +46,68 @@ app.*.map.json
 
 # Project-specific files
 instructions.todo
+
+# Firebase & FlutterFire Configuration Files
+# These contain sensitive API keys and project configuration
+firebase_options.dart
+lib/firebase_options.dart
+.firebaserc
+firebase.json
+firestore.rules
+firestore.indexes.json
+storage.rules
+firebase_app_id_file.json
+google-services.json
+GoogleService-Info.plist
+GoogleService-Info-Dev.plist
+GoogleService-Info-Prod.plist
+firebase_app_check_debug.provider
+firebase_app_check_debug_token
+
+# Environment and configuration files
+.env
+.env.local
+.env.development
+.env.production
+.env.staging
+*.env
+
+# FlutterFire CLI generated files
+.flutter-plugins
+.flutter-plugins-dependencies
+.flutter-plugins-dependencies-dev
+.flutter-plugins-dependencies-prod
+
+# Firebase project configuration
+.firebase/
+firebase-debug.log
+firebase-debug.*.log
+ui-debug.log
+
+# Android specific Firebase files
+android/app/google-services.json
+android/app/google-services-debug.json
+android/app/google-services-release.json
+
+# iOS specific Firebase files
+ios/Runner/GoogleService-Info.plist
+ios/Runner/GoogleService-Info-Dev.plist
+ios/Runner/GoogleService-Info-Prod.plist
+ios/Runner/firebase_app_check_debug.provider
+
+# Web specific Firebase files
+web/firebase-config.js
+web/firebase-messaging-sw.js
+web/firebase-config-*.js
+
+# macOS specific Firebase files
+macos/Runner/GoogleService-Info.plist
+macos/Runner/firebase_app_check_debug.provider
+
+# Windows specific Firebase files
+windows/runner/firebase-config.json
+windows/runner/firebase-config-*.json
+
+# Linux specific Firebase files
+linux/flutter/firebase-config.json
+linux/flutter/firebase-config-*.json
