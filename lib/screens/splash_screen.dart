@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
 
   void signUp(BuildContext context) {
-    // Use GoRouter to navigate to the auth screen (e.g., /signup or /login)
-    // Assuming your GoRouter is set up and /signup route exists
-    // If you want to go to a generic auth screen, change the route accordingly
-    Navigator.of(context).pushNamed('/signup');
+    context.go('/auth');
   }
 
   @override
@@ -22,6 +20,16 @@ class SplashScreen extends StatelessWidget {
             const SizedBox(height: 20),
             const SizedBox(width: 200),
             ElevatedButton(
+              onPressed: () => signUp(context),
+              child: const Text("Sign Up!"),
+            ),
+            Text(
+              "Have an account?",
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                color: Theme.of(context).colorScheme.onPrimary,
+              ),
+            ),
+            TextButton(
               onPressed: () => signUp(context),
               child: const Text("Sign Up!"),
             ),
