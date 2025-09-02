@@ -1,6 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:my_coffee_app/screens/splash_screen.dart';
 import 'package:my_coffee_app/screens/auth.dart';
+import 'package:my_coffee_app/screens/home_screen.dart';
 
 // TODO: Import these screens when they're created
 // import 'package:my_coffee_app/screens/login_screen.dart';
@@ -19,6 +21,13 @@ final GoRouter appRouter = GoRouter(
       path: '/auth',
       name: 'auth',
       builder: (context, state) => const AuthScreen(),
+    ),
+    GoRoute(
+      path: '/home',
+      name: 'home',
+      builder: (context, state) {
+        return const HomeScreen();
+      },
     ),
 
     // GoRoute(
