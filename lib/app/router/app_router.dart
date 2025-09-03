@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:my_coffee_app/screens/splash_screen.dart';
 import 'package:my_coffee_app/screens/auth.dart';

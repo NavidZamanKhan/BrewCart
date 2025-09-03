@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lottie/lottie.dart';
 
 final _firebase = FirebaseAuth.instance;
 
@@ -79,7 +80,7 @@ class _AuthScreenState extends State<AuthScreen> {
 
       if (_isLogin) {
         // Login
-        final usercredentials = await _firebase.signInWithEmailAndPassword(
+        await _firebase.signInWithEmailAndPassword(
           email: _enteredEmail,
           password: _enteredPassword,
         );
@@ -102,6 +103,10 @@ class _AuthScreenState extends State<AuthScreen> {
 
         // Navigate to home after successful login
         if (mounted) {
+          setState(() {
+            _isAuthenticating = false;
+          });
+          _form.currentState?.reset();
           context.go('/home');
         }
       } else {
@@ -144,7 +149,9 @@ class _AuthScreenState extends State<AuthScreen> {
           _enteredEmail = "";
           _enteredPassword = "";
           _enteredUsername = "";
+          _isAuthenticating = false;
         });
+        _form.currentState?.reset();
       }
     } on FirebaseAuthException catch (error) {
       if (!mounted) return;
@@ -188,33 +195,26 @@ class _AuthScreenState extends State<AuthScreen> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Theme.of(context).colorScheme.primary,
-              Theme.of(context).colorScheme.onPrimaryContainer,
-            ],
-          ),
-        ),
         child: Center(
           child: SingleChildScrollView(
             child: Column(
               children: [
-                if (_isLogin)
-                  Container(
-                    margin: const EdgeInsets.only(
-                      top: 60,
-                      bottom: 20,
-                      left: 20,
-                      right: 20,
-                    ),
-                    width: 150,
-                    child: Icon(
-                      Icons.coffee,
-                      size: 150,
-                      color: Theme.of(context).colorScheme.onPrimary,
-                    ),
+                Container(
+                  margin: const EdgeInsets.only(
+                    top: 60,
+                    bottom: 8,
+                    left: 20,
+                    right: 20,
                   ),
+                  width: 150,
+                ),
+                SizedBox(
+                  height: 240,
+                  child: Lottie.asset(
+                    'lib/assets/images/Coffee love.json',
+                    fit: BoxFit.contain,
+                  ),
+                ),
                 SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.all(16),
@@ -233,9 +233,7 @@ class _AuthScreenState extends State<AuthScreen> {
                                     "Username",
                                     style: TextStyle(
                                       color:
-                                          Theme.of(
-                                            context,
-                                          ).colorScheme.onPrimary,
+                                          Theme.of(context).colorScheme.primary,
                                     ),
                                   ),
                                 ),
@@ -245,8 +243,13 @@ class _AuthScreenState extends State<AuthScreen> {
                                     filled: true,
                                     fillColor: Colors.white,
                                     border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(16),
-                                      borderSide: BorderSide.none,
+                                      borderRadius: BorderRadius.circular(32),
+                                      borderSide: BorderSide(
+                                        color:
+                                            Theme.of(
+                                              context,
+                                            ).colorScheme.primary,
+                                      ),
                                     ),
                                     hintText: "Username",
                                   ),
@@ -272,7 +275,7 @@ class _AuthScreenState extends State<AuthScreen> {
                                   "Email Address",
                                   style: TextStyle(
                                     color:
-                                        Theme.of(context).colorScheme.onPrimary,
+                                        Theme.of(context).colorScheme.primary,
                                   ),
                                 ),
                               ),
@@ -281,13 +284,17 @@ class _AuthScreenState extends State<AuthScreen> {
                                   filled: true,
                                   fillColor: Colors.white,
                                   border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(16),
-                                    borderSide: BorderSide.none,
+                                    borderRadius: BorderRadius.circular(32),
+                                    borderSide: BorderSide(
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                    ),
                                   ),
                                   hintText: "Email Address",
                                 ),
                                 keyboardType: TextInputType.emailAddress,
                                 autocorrect: false,
+                                enableSuggestions: true,
                                 textCapitalization: TextCapitalization.none,
                                 textInputAction: TextInputAction.next,
                                 validator: (value) {
@@ -304,7 +311,7 @@ class _AuthScreenState extends State<AuthScreen> {
                               ),
                             ],
                           ),
-                          const SizedBox(height: 8),
+                          // const SizedBox(height: 8),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -314,7 +321,7 @@ class _AuthScreenState extends State<AuthScreen> {
                                   "Password",
                                   style: TextStyle(
                                     color:
-                                        Theme.of(context).colorScheme.onPrimary,
+                                        Theme.of(context).colorScheme.primary,
                                   ),
                                 ),
                               ),
@@ -323,8 +330,11 @@ class _AuthScreenState extends State<AuthScreen> {
                                   filled: true,
                                   fillColor: Colors.white,
                                   border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(16),
-                                    borderSide: BorderSide.none,
+                                    borderRadius: BorderRadius.circular(32),
+                                    borderSide: BorderSide(
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                    ),
                                   ),
                                   hintText: "Password",
                                   suffixIcon: IconButton(
@@ -360,15 +370,19 @@ class _AuthScreenState extends State<AuthScreen> {
                               onPressed: _submit,
                               style: ElevatedButton.styleFrom(
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(16),
+                                  borderRadius: BorderRadius.circular(32),
                                 ),
                                 minimumSize: const Size(double.infinity, 50),
                                 backgroundColor:
-                                    Theme.of(
-                                      context,
-                                    ).colorScheme.primaryContainer,
+                                    Theme.of(context).colorScheme.primary,
                               ),
-                              child: Text(_isLogin ? "Login" : "Signup"),
+                              child: Text(
+                                _isLogin ? "Login" : "Signup",
+                                style: TextStyle(
+                                  color:
+                                      Theme.of(context).colorScheme.onPrimary,
+                                ),
+                              ),
                             ),
                           const SizedBox(height: 8),
                           if (_isAuthenticating)
@@ -379,15 +393,18 @@ class _AuthScreenState extends State<AuthScreen> {
                                 setState(() {
                                   _isLogin = !_isLogin;
                                 });
+                                _enteredEmail = "";
+                                _enteredPassword = "";
+                                _enteredUsername = "";
+                                _form.currentState?.reset();
                               },
                               child: Text(
                                 _isLogin
                                     ? "Create an account"
-                                    : "I already have an account",
+                                    : "Already have an account, login instead",
                                 style: TextStyle(
                                   fontSize: 16,
-                                  color:
-                                      Theme.of(context).colorScheme.onPrimary,
+                                  color: Theme.of(context).colorScheme.primary,
                                 ),
                               ),
                             ),
