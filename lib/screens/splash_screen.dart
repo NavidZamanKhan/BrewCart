@@ -23,16 +23,6 @@ class SplashScreen extends StatelessWidget {
               onPressed: () => signUp(context),
               child: const Text("Sign Up!"),
             ),
-            Text(
-              "Have an account?",
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                color: Theme.of(context).colorScheme.onPrimary,
-              ),
-            ),
-            TextButton(
-              onPressed: () => signUp(context),
-              child: const Text("Sign Up!"),
-            ),
           ],
         ),
       ),

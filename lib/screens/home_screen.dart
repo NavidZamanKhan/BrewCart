@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -11,20 +12,41 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.primary,
         foregroundColor: Theme.of(context).colorScheme.onPrimary,
       ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.coffee, size: 100, color: Colors.brown),
-            SizedBox(height: 20),
-            Text(
-              'Welcome to BrewCart!',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+      body: Column(
+        spacing: 30,
+        children: [
+          const SizedBox(height: 40),
+          SizedBox(
+            height: 220,
+            width: double.infinity,
+            child: Lottie.asset(
+              'lib/assets/images/Waiting with a cup coffee.json',
+              fit: BoxFit.contain,
+              errorBuilder: (context, error, stackTrace) {
+                return Lottie.asset(
+                  'lib/assets/images/Coffee love.json',
+                  fit: BoxFit.contain,
+                );
+              },
             ),
-            SizedBox(height: 10),
-            Text('Your coffee ordering app is ready!'),
-          ],
-        ),
+          ),
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Welcome to BrewCart!',
+                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 10),
+                Text(
+                  'Your coffee ordering app is ready!',
+                  style: TextStyle(fontSize: 16),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
