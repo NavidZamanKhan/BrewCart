@@ -9,10 +9,14 @@ class BrewCartApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) {
-        return CounterBloc();
-      },
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) {
+            return CounterBloc();
+          },
+        ),
+      ],
       child: MaterialApp.router(
         title: 'BrewCart',
         theme: appTheme,
