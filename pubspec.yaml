@@ -39,8 +39,6 @@ flutter:
   assets:
     - lib/assets/images/logo.png
     - lib/assets/images/Coffee love.json
-    - lib/assets/images/Waiting with a cup coffee.lottie
-    - lib/assets/images/Error.lottie
     - lib/assets/images/Waiting with a cup coffee.json
     - lib/assets/images/Error.json
   # https://flutter.dev/to/resolution-aware-images
