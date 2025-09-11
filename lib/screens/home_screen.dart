@@ -53,46 +53,17 @@ class _HomeScreenState extends State<HomeScreen> {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Text('Hi, Loading...');
             }
-            return Text('Hi, ${snapshot.data?.username ?? 'there'} 👋');
+            return Text('Hi, ${snapshot.data?.username ?? 'there'}');
           },
         ),
+        actions: [IconButton(onPressed: () {}, icon: Icon(Icons.person))],
         backgroundColor: Theme.of(context).colorScheme.primary,
         foregroundColor: Theme.of(context).colorScheme.onPrimary,
       ),
       body: Column(
         spacing: 30,
         children: [
-          const SizedBox(height: 40),
-          SizedBox(
-            height: 220,
-            width: double.infinity,
-            child: Lottie.asset(
-              'lib/assets/images/Waiting with a cup coffee.json',
-              fit: BoxFit.contain,
-              errorBuilder: (context, error, stackTrace) {
-                return Lottie.asset(
-                  'lib/assets/images/Coffee love.json',
-                  fit: BoxFit.contain,
-                );
-              },
-            ),
-          ),
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Welcome to BrewCart!',
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  'Your coffee ordering app is ready!',
-                  style: TextStyle(fontSize: 16),
-                ),
-              ],
-            ),
-          ),
+          Padding(padding: const EdgeInsets.all(8.0), child: SearchBar()),
         ],
       ),
     );
