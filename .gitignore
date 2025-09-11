@@ -46,6 +46,7 @@ app.*.map.json
 
 # Project-specific files
 instructions.todo
+homescreen.md
 
 # Firebase & FlutterFire Configuration Files
 # These contain sensitive API keys and project configuration
