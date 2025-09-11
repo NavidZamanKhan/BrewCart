@@ -17,8 +17,8 @@ class UserData {
     return UserData(
       username: data["username"],
       email: data["email"],
-      createdAt: data["createdAt"],
-      updatedAt: data["updatedAt"],
+      createdAt: (data["createdAt"] as Timestamp).toDate().toString(),
+      updatedAt: (data["updatedAt"] as Timestamp).toDate().toString(),
     );
   }
 }
