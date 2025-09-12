@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:my_coffee_app/models/user_data.dart';
+import 'package:my_coffee_app/widgets/coffee_seach_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -63,7 +63,10 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Column(
         spacing: 30,
         children: [
-          Padding(padding: const EdgeInsets.all(8.0), child: SearchBar()),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
+            child: CoffeeSearchBar(),
+          ),
         ],
       ),
     );
