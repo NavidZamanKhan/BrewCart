@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:my_coffee_app/models/user_data.dart';
 import 'package:my_coffee_app/widgets/coffee_seach_bar.dart';
+import 'package:my_coffee_app/widgets/home_screen_scrollable_section.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -58,8 +59,6 @@ class _HomeScreenState extends State<HomeScreen> {
           },
         ),
         actions: [IconButton(onPressed: () {}, icon: Icon(Icons.person))],
-        backgroundColor: Theme.of(context).colorScheme.onPrimary,
-        foregroundColor: Theme.of(context).colorScheme.primary,
       ),
       body: Column(
         spacing: 30,
@@ -68,6 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
             child: CoffeeSearchBar(),
           ),
+          Expanded(child: HomeScreenScrollableSection()),
         ],
       ),
     );

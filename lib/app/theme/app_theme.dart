@@ -16,6 +16,11 @@ final appTheme = ThemeData(
   appBarTheme: AppBarTheme(
     backgroundColor: colorScheme.onPrimary,
     foregroundColor: colorScheme.primary,
+    titleTextStyle: TextStyle(
+      color: colorScheme.primary,
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
+    ),
     elevation: 0,
     scrolledUnderElevation: 0,
     shadowColor: Colors.transparent,
