@@ -46,6 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.onPrimary,
       appBar: AppBar(
         title: FutureBuilder<UserData?>(
           future: _getUserData(),
@@ -57,8 +58,8 @@ class _HomeScreenState extends State<HomeScreen> {
           },
         ),
         actions: [IconButton(onPressed: () {}, icon: Icon(Icons.person))],
-        backgroundColor: Theme.of(context).colorScheme.primary,
-        foregroundColor: Theme.of(context).colorScheme.onPrimary,
+        backgroundColor: Theme.of(context).colorScheme.onPrimary,
+        foregroundColor: Theme.of(context).colorScheme.primary,
       ),
       body: Column(
         spacing: 30,
